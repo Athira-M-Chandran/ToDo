@@ -7,9 +7,9 @@ async function getLastCommitFiles(owner, repo, token) {
   };
   const response = await fetch(endpoint, { headers });
   const data = await response.json();
-  const lastCommit = data[0];
+  const recentCommit = data[0];
 
-  console.log('last commit:', lastCommit);
+  console.log('last commit:', recentCommit);
   const commitInfo = {
     message: recentCommit.commit.message,
     author: recentCommit.commit.author.name,
@@ -35,10 +35,10 @@ async function main() {
   try {
     const owner = 'Athira-M-Chandran';
     const repo = 'ToDo';
-    const token = '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';
+    const token = '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';
 
-    const lastCommit = await getLastCommitFiles(owner, repo, token);
-    console.log(lastCommit);
+    const recentCommit = await getLastCommitFiles(owner, repo, token);
+    console.log(recentCommit);
   } catch (error) {
     console.error(error);
   }
