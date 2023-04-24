@@ -14,7 +14,7 @@ async function getLastCommitFiles(owner, repo, token) {
     message: recentCommit.commit.message,
     author: recentCommit.commit.author.name,
     timestamp: recentCommit.commit.author.date,
-    file: recentCommit.commit.endpoint,
+    file: recentCommit.commit.url,
   };
   
   return commitInfo;
@@ -35,7 +35,7 @@ async function main() {
   try {
     const owner = 'Athira-M-Chandran';
     const repo = 'ToDo';
-    const token = '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';
+    const token = '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';
 
     const recentCommit = await getLastCommitFiles(owner, repo, token);
     console.log(recentCommit);
