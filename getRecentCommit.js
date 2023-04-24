@@ -7,9 +7,6 @@ async function getLastCommitFiles(owner, repo, token) {
   };
   const response = await fetch(endpoint, { headers });
   const data = await response.json();
-  console.log('commit data:', data);
-
-
   const lastCommit = data[0];
 
   console.log('last commit:', lastCommit);
@@ -29,7 +26,7 @@ async function main() {
   try {
     const owner = 'Athira-M-Chandran';
     const repo = 'ToDo';
-    const token = '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';
+    const token = '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';
 
     const changedFiles = await getLastCommitFiles(owner, repo, token);
     console.log(changedFiles);
