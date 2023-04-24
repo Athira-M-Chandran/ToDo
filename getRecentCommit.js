@@ -10,17 +10,26 @@ async function getLastCommitFiles(owner, repo, token) {
   const lastCommit = data[0];
 
   console.log('last commit:', lastCommit);
-
-  const commitFilesEndpoint = lastCommit.url + '/files';
-  const commitFilesResponse = await fetch(commitFilesEndpoint, { headers });
-  const commitFilesData = await commitFilesResponse.json();
-
-  console.log('commit files:', commitFilesData);
-
-  const changedFiles = commitFilesData.map(file => file.filename);
-
-  return changedFiles;
+  const commitInfo = {
+    message: recentCommit.commit.message,
+    author: recentCommit.commit.author.name,
+    timestamp: recentCommit.commit.author.date,
+    file: recentCommit.commit.endpoint,
+  };
+  
+  return commitInfo;
 }
+
+//   const commitFilesEndpoint = lastCommit.url + '/files';
+//   const commitFilesResponse = await fetch(commitFilesEndpoint, { headers });
+//   const commitFilesData = await commitFilesResponse.json();
+
+//   console.log('commit files:', commitFilesData);
+
+//   const changedFiles = commitFilesData.map(file => file.filename);
+
+//   return changedFiles;
+// }
 
 async function main() {
   try {
@@ -28,8 +37,8 @@ async function main() {
     const repo = 'ToDo';
     const token = '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';
 
-    const changedFiles = await getLastCommitFiles(owner, repo, token);
-    console.log(changedFiles);
+    const lastCommit = await getLastCommitFiles(owner, repo, token);
+    console.log(lastCommit);
   } catch (error) {
     console.error(error);
   }
