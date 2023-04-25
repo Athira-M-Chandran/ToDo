@@ -7,12 +7,10 @@ async function getLastCommit(owner, repo, token) {
   };
   const response = await fetch(endpoint, { headers });
   const data = await response.json();
-  // console.log(data, data[0])
+  console.log(data, data)
   const recentCommit = data[0];
-
+ 
   // console.log('last commit:', recentCommit);
-
-  
   const commitInfo = {
     message: recentCommit.commit.message,
     author: recentCommit.commit.author.name,
@@ -44,7 +42,7 @@ async function main() {
   try {
     const owner = 'Athira-M-Chandran';
     const repo = 'ToDo';
-    const token = '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';
+    const token = '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';
 
     const recentCommit = await getLastCommit(owner, repo, token);
     console.log('recentCommit',recentCommit);
