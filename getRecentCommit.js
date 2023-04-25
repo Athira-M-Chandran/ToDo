@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
-async function getLastCommit(owner, repo, token) {
-  const endpoint = `https://api.github.com/repos/${owner}/${repo}/commits`;
+async function getLastCommit(owner, repo, token, branch='newBranch') {
+  const endpoint = `https://api.github.com/repos/${owner}/${repo}/commits/${branch}`;
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -22,8 +22,8 @@ async function getLastCommit(owner, repo, token) {
   return commitInfo;
 }
 
-async function getCommitFiles(owner, repo, commitSha, token) {
-  const endpoint = `https://api.github.com/repos/${owner}/${repo}/commits/${commitSha}`;
+async function getCommitFiles(owner, repo, commitSha, token, branch='newBranch') {
+  const endpoint = `https://api.github.com/repos/${owner}/${repo}/commits/${commitSha}/${branch}`;
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -42,12 +42,12 @@ async function main() {
   try {
     const owner = 'Athira-M-Chandran';
     const repo = 'ToDo';
-    const token = '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';
+    const token = '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';
 
-    const recentCommit = await getLastCommit(owner, repo, token);
+    const recentCommit = await getLastCommit(owner, repo, token,'newBranch');
     console.log('recentCommit',recentCommit);
 
-    const commitFiles = await getCommitFiles(owner, repo, recentCommit.url.split('/').pop(), token);
+    const commitFiles = await getCommitFiles(owner, repo, recentCommit.url.split('/').pop(), token, 'newBranch');
     console.log('commit files:', commitFiles);
 
     const commitInfo = {
