@@ -1,0 +1,17 @@
+*{
+  color: green;
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xxx-large;
+    flex-direction: column;
+}
+    
+.date{
+    font-size: 30px;
+}

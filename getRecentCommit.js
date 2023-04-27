@@ -43,7 +43,7 @@ async function main() {
   try {
     const owner = 'Athira-M-Chandran';
     const repo = 'ToDo';
-    const token = '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';
+    const token = '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';
 
     const recentCommit = await getLastCommit(owner, repo, token);
     console.log('recentCommit',recentCommit);
